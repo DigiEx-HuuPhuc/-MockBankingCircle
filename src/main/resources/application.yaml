@@ -1,6 +1,12 @@
 spring:
   application:
     name: MockBankingCircle
-
+  jpa:
+    open-in-view: false
+  datasource:
+    url: jdbc:postgresql://${ENV_DB_HOST:localhost}:${ENV_DB_PORT:5432}/${ENV_DB_NAME:neo-bank}?currentSchema=${ENV_DB_SCHEMA:mock-third-party}&useUnicode=true&sslmode=disable&serverTimezone=UTC
+    username: ${ENV_DB_USERNAME:postgres}
+    password: ${ENV_DB_PASSWORD:123}
+    driver-class-name: org.postgresql.Driver
 server:
   port: 9090

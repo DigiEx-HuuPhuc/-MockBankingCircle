@@ -17,15 +17,14 @@ import java.util.Date;
 public class PaymentRequest {
   @JsonFormat(pattern = "yyyy-MM-dd")
   private Date requestExecutionDate;
-  private String fxQuoteId;
-//  private String uniqueRequestId;
-//  private String currency;
+  private String uniqueRequestId;
+  private String currency;
   private String currencyOfTransfer;
   private Double amount;
   private AccountRequest debtorAccount;
   private BeneficiaryRequest beneficiaryRequest;
   private String remittanceInformation;
-//  private String masterAccountIban;
+  private String masterAccountIban;
   private String chargeBearer;
   private String clearingNetwork;
 }
