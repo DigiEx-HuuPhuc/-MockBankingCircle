@@ -1,10 +1,12 @@
 package com.aiuclus.open.api.resource.be.mockbankingcircle.web.model.req;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
@@ -13,18 +15,39 @@ import java.util.Date;
 @Setter
 @Builder
 @AllArgsConstructor
-@RequiredArgsConstructor
+@NoArgsConstructor
 public class PaymentRequest {
+  @NotNull
   @JsonFormat(pattern = "yyyy-MM-dd")
   private Date requestExecutionDate;
-  private String uniqueRequestId;
-  private String currency;
-  private String currencyOfTransfer;
-  private Double amount;
-  private AccountRequest debtorAccount;
-  private BeneficiaryRequest beneficiaryRequest;
-  private String remittanceInformation;
-  private String masterAccountIban;
-  private String chargeBearer;
+
+  private String fxQuoteId;
+
+  @NotNull private AccountRequest debtorAccount;
+
+  @NotNull private AccountRequest debtorViban;
+
+  private String debtorReference;
+
+  private String debtorNarrativeToSelf;
+
+  @NotBlank private String currencyOfTransfer;
+
+  @NotNull private AmountRequest amount;
+
+  @NotBlank private String chargeBearer;
+
+  @NotNull private RemittanceInformation remittanceInformation;
+
+  private String creditorId;
+
+  @NotNull private AccountRequest creditorAccount;
+
+  private String creditorName;
+
+  @NotNull private PostalAddress creditorAddress;
+
   private String clearingNetwork;
+
+  private String purposeCode;
 }

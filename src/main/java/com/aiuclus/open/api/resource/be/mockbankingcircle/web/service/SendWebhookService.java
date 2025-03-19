@@ -37,14 +37,12 @@ public class SendWebhookService {
 
 
         // TODO: sending webhook to the URL
-        // Log information
         log.info("Sending webhook with status {} to URL: {}", randomStatus, webhookUrl);
         log.debug("Webhook message: {}", webhookEventMessage);
 
-        // Send webhook
 
         exchange.getIn().setBody(objectMapper.writeValueAsString(webhookEventMessage));
-        exchange.getIn().setHeader(Exchange.HTTP_URI, "https://webhook.site/ab3b33e8-77da-479d-9ab5-7c7996536fbf");
+//        exchange.getIn().setHeader(Exchange.HTTP_URI, "https://webhook.site/ab3b33e8-77da-479d-9ab5-7c7996536fbf");
     }
 
     private PaymentStatusType getRandomPaymentStatus() {

@@ -16,18 +16,18 @@ import java.util.UUID;
 public class PaymentService {
     private final PaymentRepository paymentRepository;
 
-    public PaymentEntity createPayment(PaymentRequest request) {
-        PaymentEntity payment = mapToEntity(request);
-//        var saved = paymentRepository.save(payment );
-        AccountEntity account = AccountEntity.fromRequest(request.getDebtorAccount());
-        var beneficiary = BeneficiaryEntity.fromRequest(request.getBeneficiaryRequest());
-//        beneficiary.setPayment(payment);
-//        account.setPayment(payment);
-        payment.setDebtorAccount(account);
-        payment.setBeneficiary(beneficiary);
-        payment.setStatus("PendingProcessing");
-        return paymentRepository.save(payment);
-    }
+//    public PaymentEntity createPayment(PaymentRequest request) {
+//        PaymentEntity payment = mapToEntity(request);
+////        var saved = paymentRepository.save(payment );
+//        AccountEntity account = AccountEntity.fromRequest(request.getDebtorAccount());
+//        var beneficiary = BeneficiaryEntity.fromRequest(request.getBeneficiaryRequest());
+////        beneficiary.setPayment(payment);
+////        account.setPayment(payment);
+//        payment.setDebtorAccount(account);
+//        payment.setBeneficiary(beneficiary);
+//        payment.setStatus("PendingProcessing");
+//        return paymentRepository.save(payment);
+//    }
 
     public List<PaymentEntity> getPendingPayments() {
         return paymentRepository.findByStatus("PendingProcessing");
@@ -36,13 +36,13 @@ public class PaymentService {
     public PaymentEntity mapToEntity(PaymentRequest request) {
         return PaymentEntity.builder()
 //                .paymentId(UUID.randomUUID().toString())
-                .uniqueRequestId(request.getUniqueRequestId())
+                .uniqueRequestId(UUID.randomUUID().toString())
                 .requestedExecutionDate(request.getRequestExecutionDate())
                 .status("PendingProcessing") // Mặc định là PendingProcessing khi tạo mới
                 .chargeBearer(request.getChargeBearer())
                 .clearingNetwork(request.getClearingNetwork())
-                .amount(request.getAmount())
-                .currency(request.getCurrency())
+                .amount(request.getAmount().getAmount())
+                .currency(request.getCurrencyOfTransfer())
                 .currencyOfTransfer(request.getCurrencyOfTransfer())
 //                .debtorAccount(AccountEntity.fromRequest(request.getDebtorAccount()))
 //                .beneficiary(BeneficiaryEntity.fromRequest(request.getBeneficiaryRequest()))

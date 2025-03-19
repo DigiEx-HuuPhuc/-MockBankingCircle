@@ -16,6 +16,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.FieldDefaults;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.UUID;
 
@@ -30,7 +31,6 @@ public class PaymentEntity {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-//    private String paymentId;
     private String uniqueRequestId;
 
     @JsonFormat(pattern = "yyyy-MM-dd")

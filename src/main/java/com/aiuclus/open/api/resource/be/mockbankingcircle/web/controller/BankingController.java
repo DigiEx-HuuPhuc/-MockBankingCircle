@@ -1,10 +1,8 @@
 package com.aiuclus.open.api.resource.be.mockbankingcircle.web.controller;
 
 import com.aiuclus.open.api.resource.be.mockbankingcircle.web.domain.PaymentEntity;
-import com.aiuclus.open.api.resource.be.mockbankingcircle.web.domain.PaymentMapper;
 import com.aiuclus.open.api.resource.be.mockbankingcircle.web.model.req.PaymentRequest;
 import com.aiuclus.open.api.resource.be.mockbankingcircle.web.model.resp.PaymentResp;
-import com.aiuclus.open.api.resource.be.mockbankingcircle.web.model.webhook.constant.PaymentStatusType;
 import com.aiuclus.open.api.resource.be.mockbankingcircle.web.service.PaymentService;
 import lombok.RequiredArgsConstructor;
 import org.apache.camel.ProducerTemplate;
@@ -17,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/baking-circle")
+@RequestMapping("/banking-circle")
 @RequiredArgsConstructor
 public class BankingController {
 
