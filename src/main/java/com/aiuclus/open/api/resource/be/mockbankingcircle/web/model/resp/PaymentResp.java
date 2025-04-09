@@ -13,5 +13,9 @@ import lombok.Setter;
 @NoArgsConstructor
 public class PaymentResp {
   private String paymentId;
+  private String transactionReference;
+  private String concurrencyToken;
+  private String classification;
   private String status;
+  private String errors;
 }
